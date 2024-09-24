@@ -58,3 +58,62 @@ body {
     text-wrap: balance;
   }
 }
+/* globals.css */
+.dashboard {
+  display: flex;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #2c3e50;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  background-color: #34495e;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+/* Add this to your global CSS file or a relevant CSS file */
+.container {
+  max-width: 1200px; /* Limit maximum width for larger screens */
+}
+
+table {
+  width: 100%; /* Make the table take full width */
+  border-collapse: collapse; /* Remove gaps between cells */
+}
+
+th,
+td {
+  text-align: left; /* Align text to the left for better readability */
+  padding: 12px; /* Add padding to table cells */
+}
+
+th {
+  background-color: #f3f4f6; /* Light gray background for headers */
+}
+
+tr:hover {
+  background-color: #f9fafb; /* Light gray hover effect on rows */
+}

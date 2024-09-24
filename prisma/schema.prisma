@@ -26,3 +26,61 @@ enum Role {
   ADMIN
   SUPERADMIN
 }
+
+
+model Class {
+  id         Int       @id @default(autoincrement())
+  class_name String
+  year       Int
+  Fees       Fee[]
+  Students   Student[] // Added this relation
+}
+
+model Term {
+  id         Int      @id @default(autoincrement())
+  term_name  String
+  year       Int
+  Fees       Fee[]    // Relationship to track fees for each term
+}
+
+
+
+model Route {
+  id          Int       @id @default(autoincrement())
+  route_name  String
+  year        Int
+  Fees        Fee[]
+  Students    Student[] // Added this relation
+}
+
+model Fee {
+  id         Int      @id @default(autoincrement())
+  fee_amount Float
+  year       Int
+  class      Class    @relation(fields: [classId], references: [id])
+  classId    Int
+  term       Term     @relation(fields: [termId], references: [id])
+  termId     Int
+  route      Route?   @relation(fields: [routeId], references: [id])
+  routeId    Int?
+  student    Student? @relation(fields: [studentId], references: [id]) // Added relation to Student
+  studentId  Int? // Optional
+}
+
+model Student {
+  id           Int      @id @default(autoincrement())
+  firstName    String
+  lastName     String
+  age          Int
+  phone        String
+  classId      Int
+  class        Class    @relation(fields: [classId], references: [id])
+  routeId      Int?     // Optional foreign key to Route model
+  route        Route?   @relation(fields: [routeId], references: [id])
+  teacher      String
+  address      String
+  year         Int
+  source       String
+  useTransport Boolean
+  Fees         Fee[]    // Relationship to track fee payments
+}
